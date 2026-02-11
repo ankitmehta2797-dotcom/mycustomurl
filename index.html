@@ -1,0 +1,111 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simple Starter Site</title>
+  <meta name="description" content="A clean, minimal one-page starter website." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#home">MySite</a>
+    <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation">☰</button>
+    <nav id="primaryNav" class="nav">
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Build something simple.</h1>
+        <p>A lightweight, responsive starter you can customize in minutes.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#features">See Features</a>
+          <a class="btn" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+      <svg class="hero-shape" viewBox="0 0 1440 320" aria-hidden="true"><path fill="#EEF2FF" d="M0,256L48,245.3C96,235,192,213,288,208C384,203,480,213,576,224C672,235,768,245,864,224C960,203,1056,149,1152,144C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container two-col">
+        <div>
+          <h2>About</h2>
+          <p>This is a minimal one-page site built with semantic HTML, modern CSS, and a sprinkle of vanilla JavaScript. It’s fast, accessible, and easy to deploy anywhere.</p>
+          <ul class="checklist">
+            <li>Responsive layout</li>
+            <li>Dark mode friendly colors</li>
+            <li>No build tools needed</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Quick Facts</h3>
+          <p><strong>Tech:</strong> HTML + CSS + JS</p>
+          <p><strong>Perf:</strong> ~2KB CSS, ~1KB JS</p>
+          <p><strong>Deploy:</strong> GitHub Pages / Netlify</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section alt">
+      <div class="container grid-3">
+        <div class="feature">
+          <div class="icon">⚡</div>
+          <h3>Fast</h3>
+          <p>No frameworks, no bloat. Loads instantly on mobile.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🧩</div>
+          <h3>Modular</h3>
+          <p>Easily add sections, pages, or components over time.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🔒</div>
+          <h3>Accessible</h3>
+          <p>Semantic markup & focus states for better usability.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>Drop a message using the form below. This demo uses a mailto: fallback—swap with any form backend when you’re ready.</p>
+        <form class="contact-form" action="mailto:you@example.com" method="post" enctype="text/plain">
+          <label>
+            Name
+            <input name="name" type="text" required>
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" required>
+          </label>
+          <label>
+            Message
+            <textarea name="message" rows="4" required></textarea>
+          </label>
+          <button class="btn primary" type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Your Name. All rights reserved.</p>
+      <a class="to-top" href="#home">↑ Back to top</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
