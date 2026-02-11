@@ -1,71 +1,70 @@
 
-// Mobile nav toggle
-const toggle = document.getElementById('navToggle');
-const nav = document.getElementById('primaryNav');
-if (toggle) {
-  toggle.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
-  });
-}
+// Ensure scripts run after DOM is ready
+window.addEventListener('DOMContentLoaded', () => {
+  // Mobile nav (kept simple: hidden toggle styles not used on desktop)
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('primaryNav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
 
-// Smooth scroll for anchor links
-for (const a of document.querySelectorAll('a[href^="#"]')){
-  a.addEventListener('click', (e)=>{
-    const id = a.getAttribute('href');
-    if (id && id.length>1){
-      const el = document.querySelector(id);
-      if(el){
-        e.preventDefault();
-        el.scrollIntoView({behavior:'smooth'});
-        nav?.classList?.remove('open');
-        toggle?.setAttribute('aria-expanded','false');
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id && id.length > 1) {
+        const el = document.querySelector(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
       }
-    }
+    });
   });
-}
 
-// Year in footer
-const yearEl = document.getElementById('year');
-if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+  // Footer year
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-// Friday poll logic (no storage)
-(function(){
+  // Friday poll logic (NO storage)
   const form = document.getElementById('fridayForm');
   const result = document.getElementById('fridayResult');
   const reveal = document.getElementById('fridayReveal');
   const revealBtn = document.getElementById('revealBtn');
-  const revealMsg = document.getElementById('revealMsg');
-  if(!form || !result) return;
+  const plan = document.getElementById('plan');
 
-  form.addEventListener('submit', (e)=>{
-    e.preventDefault();
-    // Determine selected answer
-    const fd = new FormData(form);
-    const choice = fd.get('answer');
+  if (form && result) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const choice = new FormData(form).get('answer');
 
-    // Reset states
-    result.hidden = false;
-    reveal.hidden = true;
-    revealMsg.hidden = true;
-
-    if(!choice){
-      result.textContent = 'Please choose an option before submitting.';
-      return;
-    }
-
-    if (choice === 'no'){
-      result.textContent = 'amazing choice, but you will still have to know haha';
-    } else if (choice === 'yes'){
-      result.textContent = "thought you'd select this - no excitment eh?";
-    } else if (choice === 'absolutely'){
+      // Reset UI
+      result.hidden = false;
       result.textContent = '';
-      reveal.hidden = false; // show extra option area
-    }
-  });
+      reveal.hidden = true;
+      plan.hidden = true;
 
-  revealBtn?.addEventListener('click', ()=>{
-    // Simple reveal action for now
-    revealMsg.hidden = false;
-  });
-})();
+      if (!choice) {
+        result.textContent = 'Please choose an option before submitting.';
+        return;
+      }
+      if (choice === 'no') {
+        result.textContent = 'amazing choice, but you will still have to know haha';
+      } else if (choice === 'yes') {
+        result.textContent = "thought you'd select this - no excitment eh?";
+      } else if (choice === 'absolutely') {
+        reveal.hidden = false;
+      }
+    });
+  }
+
+  if (revealBtn && plan) {
+    revealBtn.addEventListener('click', () => {
+      plan.hidden = false; // reveal the example plan below
+      plan.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+});
