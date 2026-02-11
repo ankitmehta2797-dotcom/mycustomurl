@@ -1,26 +1,12 @@
 
-// Ensure scripts run after DOM is ready
 window.addEventListener('DOMContentLoaded', () => {
-  // Mobile nav (kept simple: hidden toggle styles not used on desktop)
-  const toggle = document.getElementById('navToggle');
-  const nav = document.getElementById('primaryNav');
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-  }
-
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const id = a.getAttribute('href');
       if (id && id.length > 1) {
         const el = document.querySelector(id);
-        if (el) {
-          e.preventDefault();
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
       }
     });
   });
@@ -42,28 +28,19 @@ window.addEventListener('DOMContentLoaded', () => {
       const choice = new FormData(form).get('answer');
 
       // Reset UI
-      result.hidden = false;
-      result.textContent = '';
-      reveal.hidden = true;
-      plan.hidden = true;
+      result.hidden = false; result.textContent = '';
+      reveal.hidden = true; if (plan) plan.hidden = true;
 
-      if (!choice) {
-        result.textContent = 'Please choose an option before submitting.';
-        return;
-      }
-      if (choice === 'no') {
-        result.textContent = 'amazing choice, but you will still have to know haha';
-      } else if (choice === 'yes') {
-        result.textContent = "thought you'd select this - no excitment eh?";
-      } else if (choice === 'absolutely') {
-        reveal.hidden = false;
-      }
+      if (!choice) { result.textContent = 'Please choose an option before submitting.'; return; }
+      if (choice === 'no')      { result.textContent = 'amazing choice, but you will still have to know haha'; }
+      else if (choice === 'yes'){ result.textContent = "thought you'd select this - no excitment eh?"; }
+      else if (choice === 'absolutely'){ reveal.hidden = false; }
     });
   }
 
   if (revealBtn && plan) {
     revealBtn.addEventListener('click', () => {
-      plan.hidden = false; // reveal the example plan below
+      plan.hidden = false;
       plan.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
