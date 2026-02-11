@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Simple Starter Site</title>
-  <meta name="description" content="A clean, minimal one-page starter website." />
+  <title>Ankit | Custom Site</title>
+  <meta name="description" content="A clean, minimal one-page website." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,11 +14,12 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="logo" href="#home">MySite</a>
+    <a class="logo" href="#home">tried a custom website for you</a>
     <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation">☰</button>
     <nav id="primaryNav" class="nav">
       <a href="#about">About</a>
       <a href="#features">Features</a>
+      <a href="#friday">Friday</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -26,32 +27,32 @@
   <main id="home">
     <section class="hero">
       <div class="hero-inner">
-        <h1>Build something simple.</h1>
-        <p>A lightweight, responsive starter you can customize in minutes.</p>
+        <h1>Bright. Bold. Simple.</h1>
+        <p>A lightweight, responsive starter now themed in yellow, white, and red.</p>
         <div class="cta-row">
-          <a class="btn primary" href="#features">See Features</a>
+          <a class="btn primary" href="#friday">Friday Plan</a>
           <a class="btn" href="#contact">Get in Touch</a>
         </div>
       </div>
-      <svg class="hero-shape" viewBox="0 0 1440 320" aria-hidden="true"><path fill="#EEF2FF" d="M0,256L48,245.3C96,235,192,213,288,208C384,203,480,213,576,224C672,235,768,245,864,224C960,203,1056,149,1152,144C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+      <svg class="hero-shape" viewBox="0 0 1440 320" aria-hidden="true"><path fill="var(--tint-soft)" d="M0,256L48,245.3C96,235,192,213,288,208C384,203,480,213,576,224C672,235,768,245,864,224C960,203,1056,149,1152,144C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
     </section>
 
     <section id="about" class="section">
       <div class="container two-col">
         <div>
           <h2>About</h2>
-          <p>This is a minimal one-page site built with semantic HTML, modern CSS, and a sprinkle of vanilla JavaScript. It’s fast, accessible, and easy to deploy anywhere.</p>
+          <p>This one-page site is fast, accessible, and easy to deploy anywhere. Customize colors and content without build tools.</p>
           <ul class="checklist">
             <li>Responsive layout</li>
-            <li>Dark mode friendly colors</li>
-            <li>No build tools needed</li>
+            <li>Accessible components</li>
+            <li>No framework bloat</li>
           </ul>
         </div>
         <div class="card">
-          <h3>Quick Facts</h3>
-          <p><strong>Tech:</strong> HTML + CSS + JS</p>
-          <p><strong>Perf:</strong> ~2KB CSS, ~1KB JS</p>
-          <p><strong>Deploy:</strong> GitHub Pages / Netlify</p>
+          <h3>Theme</h3>
+          <p><strong>Palette:</strong> Yellow • White • Red</p>
+          <p><strong>Primary:</strong> Golden yellow</p>
+          <p><strong>Accent:</strong> Vibrant red</p>
         </div>
       </div>
     </section>
@@ -76,10 +77,38 @@
       </div>
     </section>
 
+    <section id="friday" class="section">
+      <div class="container">
+        <div class="poll card">
+          <h2>Quick Question</h2>
+          <p class="lead">Do you want to know what’s planned on Friday?</p>
+          <form id="fridayForm" class="poll-form" aria-describedby="fridayHelp">
+            <div class="options">
+              <label class="option"><input type="radio" name="answer" value="yes"> Yes</label>
+              <label class="option"><input type="radio" name="answer" value="no"> No</label>
+              <label class="option"><input type="radio" name="answer" value="absolutely"> 100% Yes</label>
+            </div>
+            <button class="btn primary" type="submit">Submit</button>
+            <p id="fridayHelp" class="muted">We won’t store your answer.</p>
+          </form>
+          <div id="fridayResult" class="poll-result" hidden role="status" aria-live="polite"></div>
+
+          <!-- Reveal area for 100% Yes pathway -->
+          <div id="fridayReveal" class="reveal card-soft" hidden>
+            <p class="reveal-title">wow - love the excitment</p>
+            <div class="reveal-actions">
+              <button id="revealBtn" class="btn accent">tell me alreadyyy</button>
+            </div>
+            <p id="revealMsg" class="muted" hidden>Stay tuned — we’ll drop the Friday plan right below soon.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="contact" class="section">
       <div class="container">
         <h2>Contact</h2>
-        <p>Drop a message using the form below. This demo uses a mailto: fallback—swap with any form backend when you’re ready.</p>
+        <p>Drop a message using the form below.</p>
         <form class="contact-form" action="mailto:you@example.com" method="post" enctype="text/plain">
           <label>
             Name
@@ -101,7 +130,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>© <span id="year"></span> Your Name. All rights reserved.</p>
+      <p>© <span id="year"></span> Ankit Mehta. All rights reserved.</p>
       <a class="to-top" href="#home">↑ Back to top</a>
     </div>
   </footer>
